@@ -2,7 +2,6 @@ package main
 
 import (
 	"database/sql"
-	"log"
 	"time"
 
 	_ "modernc.org/sqlite"
@@ -41,14 +40,7 @@ func initDatabase() error {
 
 	// 插入示例数据（如果表为空）
 	var count int
-	err = db.QueryRow("SELECT COUNT(*) FROM websites").Scan(&count)
-	if err == nil && count == 0 {
-		insertSQL := `INSERT INTO websites (name, url) VALUES (?, ?)`
-		_, err = db.Exec(insertSQL, "企业一体化管理平台", "http://paas-web.eimm.wisesoft.net.cn:8099/#/")
-		if err != nil {
-			log.Printf("插入示例数据失败: %v", err)
-		}
-	}
+	db.QueryRow("SELECT COUNT(*) FROM websites").Scan(&count)
 
 	return nil
 }
