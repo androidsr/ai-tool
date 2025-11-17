@@ -33,7 +33,7 @@ func main() {
 			BackdropType:                      windows.Mica,
 			DisableWindowIcon:                 false,
 			DisableFramelessWindowDecorations: false,
-			WebviewUserDataPath:               "",
+			WebviewUserDataPath:               "./webview-cache",
 			WebviewBrowserPath:                "",
 			Theme:                             windows.Light,
 		},
