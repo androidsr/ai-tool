@@ -154,6 +154,10 @@ wails build
 - **项目维护者**：sirui
 - **技术支持邮箱**：srandroid@163.com
 
+## 💰支持与打赏
+- 🙏** 感谢土豪大哥的打赏 **
+- <img width="500" height="475" alt="image" src="https://github.com/user-attachments/assets/f13e8645-95cd-4e00-98c3-a232c552fbd6" />
+
 ## 📄 许可证
 
 本项目采用 MIT 许可证，详情请参阅 LICENSE 文件。
