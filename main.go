@@ -3,6 +3,7 @@ package main
 import (
 	"embed"
 	"os"
+	"path/filepath"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
@@ -15,9 +16,14 @@ var assets embed.FS
 
 func main() {
 	app := NewApp()
-	os.Mkdir("./webview-cache", 0660)
-	err := wails.Run(&options.App{
-		Title:  "企业一体化管理平台",
+	configDir, err := os.UserConfigDir()
+	if err != nil {
+		configDir = os.TempDir()
+	}
+	var dir = filepath.Join(configDir, "cache")
+	os.Mkdir(dir, 0777)
+	err = wails.Run(&options.App{
+		Title:  "站点管理",
 		Width:  1400,
 		Height: 900,
 		AssetServer: &assetserver.Options{
@@ -34,7 +40,7 @@ func main() {
 			BackdropType:                      windows.Mica,
 			DisableWindowIcon:                 false,
 			DisableFramelessWindowDecorations: false,
-			WebviewUserDataPath:               "./webview-cache",
+			WebviewUserDataPath:               dir,
 			WebviewBrowserPath:                "",
 			Theme:                             windows.Light,
 		},

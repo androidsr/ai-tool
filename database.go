@@ -40,8 +40,14 @@ func initDatabase() error {
 
 	// 插入示例数据（如果表为空）
 	var count int
-	db.QueryRow("SELECT COUNT(*) FROM websites").Scan(&count)
-
+	err = db.QueryRow("SELECT COUNT(*) FROM websites").Scan(&count)
+	if err == nil && count == 0 {
+		//写入一条默认数据
+		_, err = db.Exec("INSERT INTO websites (name, url) VALUES (?, ?)", "示例网站", "https://example.com")
+		if err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
