@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"os"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
@@ -14,7 +15,7 @@ var assets embed.FS
 
 func main() {
 	app := NewApp()
-
+	os.Mkdir("./webview-cache", 0660)
 	err := wails.Run(&options.App{
 		Title:  "企业一体化管理平台",
 		Width:  1400,
